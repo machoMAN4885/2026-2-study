@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="apple-mobile-web-app-title" content="이서의 가채점">
+<title>이서의 서울대 예비 359번 · 국어 가채점</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--ink:#1c2230;--sub:#5b6474;--line:#e2e5eb;--acc:#3b5bdb;--accd:#2c46b5;--accl:#e8edff;--ok:#2b8a3e;--bad:#e03131;--mid:#e8590c;--pen:#e03131}
+@media (prefers-color-scheme:dark){:root{--bg:#14161b;--card:#1d2027;--ink:#eef0f4;--sub:#a3abb9;--line:#323844;--acc:#7c9bff;--accd:#5a7cf0;--accl:#26304d;--ok:#51cf66;--bad:#ff6b6b;--mid:#ff922b;--pen:#ff4d4d}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Gowun Dodum",-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;font-size:15px;line-height:1.45}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 14px 0}
+h1{font-size:17px;margin:0 0 2px}
+.small{font-size:12.5px;color:var(--sub)}
+nav{display:flex;gap:4px;margin-top:10px}
+nav button{flex:1;border:0;background:none;padding:10px 4px;font-size:14px;color:var(--sub);border-bottom:2.5px solid transparent;cursor:pointer;font-weight:600}
+nav button.on{color:var(--acc);border-color:var(--acc)}
+main{max-width:640px;margin:0 auto;padding:14px 12px 80px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:12px}
+.sec{font-weight:700;margin:18px 2px 8px;display:flex;justify-content:space-between;align-items:baseline}
+.row{display:flex;align-items:center;gap:6px;padding:7px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.row:last-child{border-bottom:0}
+.no{width:28px;font-weight:700;font-variant-numeric:tabular-nums}
+.ch{display:flex;gap:4px}
+.ch button{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:none;color:var(--ink);font-size:15px;cursor:pointer}
+.ch button.on{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:700}
+.cf{display:flex;gap:3px;margin-left:auto}
+.cf button{white-space:nowrap;border:1px solid var(--line);background:none;color:var(--sub);border-radius:999px;padding:4px 8px;font-size:12px;cursor:pointer}
+.cf button.on.c0{background:var(--ok);border-color:var(--ok);color:#fff}
+.cf button.on.c1{background:var(--mid);border-color:var(--mid);color:#fff}
+.cf button.on.c2{background:var(--sub);border-color:var(--sub);color:#fff}
+.memo{width:100%;margin-left:34px;display:none}
+.memo input{width:calc(100% - 34px);border:1px solid var(--line);border-radius:8px;padding:6px 8px;background:var(--bg);color:var(--ink);font-size:13px}
+.row.showmemo .memo{display:block}
+.mbtn{border:0;background:none;color:var(--sub);font-size:13px;cursor:pointer;padding:4px}
+textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:15px;background:var(--bg);color:var(--ink);font-family:ui-monospace,Menlo,monospace}
+.btn{border:0;background:var(--acc);color:#fff;border-radius:10px;padding:11px 14px;font-size:15px;font-weight:600;cursor:pointer}
+.btn.ghost{background:none;color:var(--acc);border:1.5px solid var(--acc)}
+.btn.warn{background:none;color:var(--bad);border:1.5px solid var(--bad)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(54px,1fr));gap:6px}
+.cell{border:1px solid var(--line);border-radius:8px;padding:5px 2px;text-align:center;cursor:pointer;user-select:none;font-size:13px}
+.cell b{display:block;font-size:15px}
+.cell.p3{background:var(--acc);color:#fff;border-color:var(--acc)}
+.big{font-size:44px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.1}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.stat{background:var(--bg);border-radius:10px;padding:8px;text-align:center}
+.stat b{display:block;font-size:20px}
+.res{display:grid;grid-template-columns:repeat(auto-fill,minmax(54px,1fr));gap:6px}
+.res .cell{cursor:default}
+.res .ok{border-color:var(--ok);color:var(--ok)}
+.res .x{background:var(--bad);border-color:var(--bad);color:#fff}
+.res .na{border-style:dashed;color:var(--sub)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{padding:7px 4px;border-bottom:1px solid var(--line);text-align:center}
+th{color:var(--sub);font-weight:600;font-size:12.5px}
+.tag{font-size:11.5px;padding:2px 7px;border-radius:999px;color:#fff}
+.t0{background:var(--ok)}.t1{background:var(--mid)}.t2{background:var(--sub)}
+.progress{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-top:8px}
+.progress i{display:block;height:100%;background:var(--acc);width:0}
+ul{padding-left:18px;margin:6px 0}
+li{margin:3px 0}
+.flex{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.hide{display:none!important}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:999px;font-size:14px;opacity:0;transition:.2s;pointer-events:none}
+.toast.on{opacity:1}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:9}
+.modal .card{max-width:320px}
+
+.drop{display:block;border:2px dashed var(--line);border-radius:12px;padding:18px;text-align:center;cursor:pointer}
+.drop:hover{border-color:var(--acc)}
+#viewer{display:none;background:#888;border-radius:10px;overflow:auto;max-height:calc(100vh - 260px);-webkit-overflow-scrolling:touch}
+#viewer.on{display:block}
+#pages{width:100%;transition:width .15s}
+#pages canvas,#pages img{display:block;width:100%;height:auto;margin:0 0 6px;background:#fff}
+.vtools{display:flex;gap:6px;align-items:center;margin:8px 0}
+.vtools button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:6px 10px;font-size:14px;cursor:pointer}
+#bar{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--card);border-top:1px solid var(--line);padding:8px 10px calc(8px + env(safe-area-inset-bottom));box-shadow:0 -4px 16px rgba(0,0,0,.08)}
+#bar .in{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:7px}
+#bar .top{display:flex;align-items:center;gap:6px}
+#bar select{font-size:16px;font-weight:700;padding:6px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+#bar .nav{border:1px solid var(--line);background:none;color:var(--ink);border-radius:8px;width:40px;height:36px;font-size:16px;cursor:pointer}
+#bar .ch button{width:40px;height:40px;font-size:18px}
+@media (max-width:420px){#bar .ch{gap:2px}#bar .ch button{width:34px;height:34px;font-size:15px}#bar .cf{gap:2px}#bar .cf button{padding:4px 5px;font-size:11.5px}}
+#bar .bottom{display:flex;align-items:center;gap:8px;justify-content:space-between}
+body.has-bar main{padding-bottom:170px}
+.sheet{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;font-variant-numeric:tabular-nums}
+.sheet div{background:var(--bg);border-radius:6px;padding:4px 6px;font-size:13.5px;cursor:pointer}
+.sheet div.cur{outline:2px solid var(--acc)}
+.sheet span{color:var(--sub);display:inline-block;width:22px}
+@media (min-width:980px){
+  body.has-bar main{max-width:1240px;display:block}
+  #tab-mine.split{display:grid;grid-template-columns:1fr 360px;gap:14px;align-items:start}
+  #tab-mine.split #viewer{max-height:calc(100vh - 250px)}
+  #tab-mine.split .side{position:sticky;top:110px;max-height:calc(100vh - 290px);overflow:auto}
+}
+
+body{background:var(--bg)}
+@media (prefers-color-scheme:dark){body{background:var(--bg)}}
+h1,nav button,.btn,.sec,.card>b,.big,.stat b,#bar select,.no,.sheet span,.cell b{font-family:"Jua","Gowun Dodum",sans-serif;font-weight:400}
+header{background:var(--bg)}
+
+.title{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+h1{font-size:22px;color:var(--ink)}
+.badge{font-family:"Jua",sans-serif;background:var(--accl);color:var(--acc);border-radius:999px;padding:3px 12px;font-size:13.5px}
+nav button{font-size:15.5px;border-radius:14px 14px 0 0}
+nav button.on{background:var(--card)}
+.card{border-radius:16px;border:1px solid var(--line);box-shadow:0 1px 3px rgba(16,24,40,.06)}
+.btn{border-radius:999px;box-shadow:0 2px 0 var(--accd);font-size:16px;transition:transform .08s}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.ghost,.btn.warn{box-shadow:none}
+.ch button{border-width:2px;transition:transform .1s}
+.ch button:active{transform:scale(.9)}
+.ch button.on{box-shadow:0 2px 0 var(--accd);transform:translateY(-1px)}
+.cf button{border-width:1.5px}
+.progress{height:8px;border-radius:999px;background:var(--line)}
+.progress i{background:var(--acc);border-radius:999px}
+#bar{border-radius:18px 18px 0 0;border:1px solid var(--line);border-bottom:0}
+#bar .nav{border-radius:12px;border-width:2px}
+#bar select{border-radius:12px;border-width:2px;font-size:17px}
+.sheet div{border-radius:10px;border:1.5px solid transparent}
+.sheet div.cur{outline:none;border-color:var(--acc);background:var(--accl)}
+
+
+
+#viewer{border-radius:14px;background:#d9dde5}
+.cell{border-radius:12px}
+
+.tag{border-radius:999px}
+.big{color:var(--ink)}
+.cheer{text-align:center;font-family:"Jua",sans-serif;font-size:17px;margin-top:6px}
+.pg{position:relative;margin:0 0 6px;background:#fff}
+.pg img{margin:0!important}
+#pages{position:relative}
+#marker{position:absolute;transform:translate(-110%,-15%);font-size:26px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.25));animation:bob .9s ease-in-out infinite;pointer-events:none}
+@keyframes bob{50%{transform:translate(-90%,-15%)}}
+.seg{display:inline-flex;border:2px solid var(--line);border-radius:999px;overflow:hidden}
+.vtools .seg button{border:0;border-radius:0;padding:6px 10px;font-family:Jua,sans-serif}
+.vtools .seg button.on{background:var(--acc);color:#fff}
+.opt{position:absolute;border:0;background:none;padding:0;border-radius:50%;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.pg.curq .opt[data-cq="1"]{background:rgba(59,91,219,.12)}
+.opt.on{border:3px solid var(--pen);background:rgba(224,49,49,.06)!important;transform:rotate(-8deg);border-radius:48% 52% 50% 46%}
+.opt.on::after{content:"";position:absolute;inset:-5px;border:1.5px solid var(--pen);border-radius:52% 46% 50% 50%;opacity:.55;transform:rotate(14deg)}
+.hint{background:var(--accl);color:var(--acc);border-radius:10px;padding:8px 10px;font-size:13.5px;margin:0 0 8px}
+</style>
+</head>
+<body>
+<header>
+  <div class="title"><h1>이서의 서울대 예비 359번 🎓</h1><span class="badge">국어 복기 · 가채점</span></div>
+  <div class="small">공통(독서·문학) 1–34 · 화법과 작문 35–45 · 입력 내용은 이 기기 브라우저에 자동 저장돼요</div>
+  <nav>
+    <button data-tab="mine" class="on">✏️ 내 답 복기</button>
+    <button data-tab="result">💯 채점 결과</button>
+  </nav>
+</header>
+
+<main>
+<!-- 1. 내 답 -->
+<section id="tab-mine" class="split">
+  <div class="main-col">
+    <div class="vtools" id="vtools">
+      <button onclick="zoom(-25)">－</button><span class="small" id="zoomTxt">100%</span><button onclick="zoom(25)">＋</button>
+    </div>
+    <div class="small" id="vMsg" style="margin:0 4px 6px"></div>
+    <div class="hint">✍️ 문제지의 ①~⑤를 직접 탭하면 동그라미로 표시되고 답이 입력돼요. 다시 탭하면 지워져요.</div>
+    <div id="viewer" class="on"><div id="pages"></div></div>
+  </div>
+  <div class="side">
+    <div class="card">
+      <b>내 답안지</b> <span class="small" id="progTxt"></span>
+      <div class="progress"><i id="prog"></i></div>
+      <div class="small" style="margin:6px 0">칸을 누르면 그 문제로 이동해요. 문제지에서 선지를 탭하거나 아래 바에서 골라도 돼요.</div>
+      <div class="sheet" id="sheet"></div>
+      <div class="flex" style="margin-top:10px">
+        <button class="btn ghost" onclick="copyMine()">내 답 복사</button>
+        <button class="btn ghost" onclick="toggleList()">메모·상세 목록</button>
+      </div>
+    </div>
+    <div class="card small">
+      <b style="color:var(--ink)">복기 요령</b>
+      <ul>
+        <li>정답 공개를 보기 <b>전에</b> 내 답부터 끝까지 입력하세요.</li>
+        <li>지문 밑줄·선지 X표를 보며 그때 판단 근거를 떠올리면 잘 기억나요.</li>
+        <li>자신감: <b>확실</b> / <b>헷갈림</b>(둘 중 고민) / <b>찍음</b>(기억 안 남)</li>
+      </ul>
+    </div>
+    <div id="mineList" class="hide"></div>
+    <div class="flex" style="margin-top:4px">
+      <button class="btn" onclick="go('result')">채점하기 💯</button>
+      <button class="btn warn" onclick="askReset()">초기화</button>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 결과 -->
+<section id="tab-result" class="hide">
+  <div id="resultBox"></div>
+</section>
+</main>
+
+<div id="bar">
+  <div class="in">
+    <div class="top">
+      <button class="nav" onclick="setCur(cur-1)">◀</button>
+      <select id="qSel" onchange="setCur(+this.value)"></select>
+      <span class="small" id="qSec"></span>
+      <button class="nav" onclick="setCur(cur+1)" style="margin-left:auto">▶</button>
+    </div>
+    <div class="bottom">
+      <div class="ch" id="barCh"></div>
+      <div class="cf" id="barCf"></div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<div class="modal hide" id="modal">
+  <div class="card">
+    <b>전체 초기화할까요?</b>
+    <div class="small" style="margin:6px 0 12px">입력한 내 답, 정답, 배점이 모두 지워져요.</div>
+    <div class="flex"><button class="btn warn" onclick="doReset()">초기화</button><button class="btn ghost" onclick="closeModal()">취소</button></div>
+  </div>
+</div>
+
+<script>
+const N = 45;
+const SECTIONS = [
+  {name:"공통 (독서·문학)", from:1, to:34},
+  {name:"선택 · 화법과 작문", from:35, to:45}
+];
+const CONF = ["😎 확실","🤔 헷갈림","🎲 찍음"];
+const KEY = "suneung-kor-review-v1";
+let S = {mine:{}, conf:{}, memo:{}, form:'홀'};
+
+function load(){ try{ const raw = localStorage.getItem(KEY); if(raw) S = Object.assign(S, JSON.parse(raw)); }catch(e){} }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+
+function toast(t){ const el=document.getElementById('toast'); el.textContent=t; el.classList.add('on'); clearTimeout(el._t); el._t=setTimeout(()=>el.classList.remove('on'),1400); }
+
+/* ---------- 내 답 ---------- */
+function renderMine(){
+  const box = document.getElementById('mineList');
+  box.innerHTML = "";
+  SECTIONS.forEach(sec=>{
+    const h = document.createElement('div');
+    h.className="sec"; h.innerHTML = `<span>${sec.name}</span><span class="small">${sec.from}–${sec.to}번</span>`;
+    box.appendChild(h);
+    const card = document.createElement('div'); card.className="card";
+    for(let q=sec.from;q<=sec.to;q++){
+      const row = document.createElement('div'); row.className="row"; row.id="r"+q;
+      if(S.memo[q]) row.classList.add('showmemo');
+      let ch = '<div class="ch">';
+      for(let c=1;c<=5;c++) ch += `<button data-q="${q}" data-c="${c}" class="${S.mine[q]==c?'on':''}">${"①②③④⑤"[c-1]}</button>`;
+      ch += '</div>';
+      let cf = '<div class="cf">';
+      CONF.forEach((t,i)=> cf += `<button data-q="${q}" data-f="${i}" class="c${i} ${S.conf[q]===i?'on':''}">${t}</button>`);
+      cf += `<button class="mbtn" data-memo="${q}" title="메모">✎</button></div>`;
+      row.innerHTML = `<div class="no">${q}</div>${ch}${cf}<div class="memo"><input data-mq="${q}" placeholder="메모 (예: ②랑 ④ 고민, 지문 3문단 근거)" value="${(S.memo[q]||'').replace(/"/g,'&quot;')}"></div>`;
+      card.appendChild(row);
+    }
+    box.appendChild(card);
+  });
+  updateProg();
+}
+document.addEventListener('click', e=>{
+  const b = e.target.closest('button'); if(!b) return;
+  if(b.dataset.c){
+    const q=b.dataset.q, c=+b.dataset.c;
+    S.mine[q] = (S.mine[q]===c)? undefined : c;
+    if(S.mine[q]===undefined) delete S.mine[q];
+    b.parentNode.querySelectorAll('button').forEach(x=>x.classList.toggle('on', +x.dataset.c===S.mine[q]));
+    save(); updateProg(); renderSheet(); refreshMarks(q); if(+q===cur) renderBar();
+  } else if(b.dataset.f!==undefined && b.dataset.q){
+    const q=b.dataset.q, f=+b.dataset.f;
+    if(S.conf[q]===f) delete S.conf[q]; else S.conf[q]=f;
+    b.parentNode.querySelectorAll('[data-f]').forEach(x=>x.classList.toggle('on', +x.dataset.f===S.conf[q]));
+    save(); if(+q===cur) renderBar();
+  } else if(b.dataset.memo){
+    const r=document.getElementById('r'+b.dataset.memo); r.classList.toggle('showmemo');
+    if(r.classList.contains('showmemo')) r.querySelector('input').focus();
+  } else if(b.dataset.tab){ go(b.dataset.tab); }
+});
+document.addEventListener('input', e=>{
+  if(e.target.dataset.mq){ const q=e.target.dataset.mq; if(e.target.value) S.memo[q]=e.target.value; else delete S.memo[q]; save(); }
+});
+function updateProg(){
+  const n = Object.keys(S.mine).length;
+  document.getElementById('prog').style.width = (n/N*100)+"%";
+  document.getElementById('progTxt').textContent = `${n} / ${N} 문항 입력됨`;
+}
+
+
+/* ---------- 문제지 뷰어 ---------- */
+let cur = 1, zoomPct = 100;
+function secOf(q){ return SECTIONS.find(s=>q>=s.from&&q<=s.to); }
+function setCur(q){
+  if(q<1) q=1; if(q>N) q=N; cur=q;
+  document.getElementById('qSel').value=q;
+  document.getElementById('qSec').textContent = secOf(q).name;
+  renderBar(); renderSheet(); scrollToQ(q); refreshMarks();
+}
+function renderBar(){
+  let h=''; for(let c=1;c<=5;c++) h+=`<button class="${S.mine[cur]==c?'on':''}" onclick="barPick(${c})">${"①②③④⑤"[c-1]}</button>`;
+  document.getElementById('barCh').innerHTML=h;
+  let f=''; CONF.forEach((t,i)=> f+=`<button class="c${i} ${S.conf[cur]===i?'on':''}" onclick="barConf(${i})">${t}</button>`);
+  document.getElementById('barCf').innerHTML=f;
+}
+function barPick(c){
+  if(S.mine[cur]===c) delete S.mine[cur]; else S.mine[cur]=c;
+  save(); renderBar(); renderSheet(); syncRow(cur); updateProg(); refreshMarks(cur);
+}
+function barConf(i){
+  if(S.conf[cur]===i) delete S.conf[cur]; else S.conf[cur]=i;
+  save(); syncRow(cur);
+  if(S.mine[cur] && S.conf[cur]!==undefined && cur<N){ setTimeout(()=>setCur(cur+1),180); } else renderBar();
+}
+function syncRow(q){
+  const r=document.getElementById('r'+q); if(!r) return;
+  r.querySelectorAll('[data-c]').forEach(x=>x.classList.toggle('on', +x.dataset.c===S.mine[q]));
+  r.querySelectorAll('[data-f]').forEach(x=>x.classList.toggle('on', +x.dataset.f===S.conf[q]));
+}
+function renderSheet(){
+  let h=''; for(let q=1;q<=N;q++) h+=`<div class="${q===cur?'cur':''}" onclick="setCur(${q})"><span>${q}</span>${S.mine[q]?"①②③④⑤"[S.mine[q]-1]:'·'}</div>`;
+  document.getElementById('sheet').innerHTML=h;
+}
+function toggleList(){ document.getElementById('mineList').classList.toggle('hide'); }
+function copyMine(){
+  let t=`[이서의 수능 국어 내 답 복기 · 홀수형]\n`;
+  SECTIONS.forEach(s=>{ t+=s.name+'\n'; for(let q=s.from;q<=s.to;q++){ t+=`${q}. ${S.mine[q]||'-'}${S.conf[q]!==undefined?' ('+CONF[S.conf[q]]+')':''}${S.memo[q]?' — '+S.memo[q]:''}\n`; } });
+  navigator.clipboard.writeText(t).then(()=>toast("복사 완료 💌"),()=>toast("복사 실패 — 화면을 캡처해 주세요"));
+}
+function zoom(d){ zoomPct=Math.min(300,Math.max(100,zoomPct+d)); document.getElementById('pages').style.width=zoomPct+'%'; document.getElementById('zoomTxt').textContent=zoomPct+'%'; }
+
+const EXAM = {"홀":{"pages":["p/h-01.jpg","p/h-02.jpg","p/h-03.jpg","p/h-04.jpg","p/h-05.jpg","p/h-06.jpg","p/h-07.jpg","p/h-08.jpg","p/h-09.jpg","p/h-10.jpg","p/h-11.jpg","p/h-12.jpg","p/h-13.jpg","p/h-14.jpg","p/h-15.jpg","p/h-16.jpg"],"q":{"1":{"i":0,"x":0.1044,"y":0.7736},"2":{"i":0,"x":0.5185,"y":0.2016},"3":{"i":0,"x":0.5185,"y":0.4868},"4":{"i":1,"x":0.5185,"y":0.6508},"5":{"i":2,"x":0.1044,"y":0.1415},"6":{"i":2,"x":0.1044,"y":0.4288},"7":{"i":2,"x":0.1044,"y":0.7315},"8":{"i":2,"x":0.5185,"y":0.1415},"9":{"i":2,"x":0.5185,"y":0.8091},"10":{"i":3,"x":0.5185,"y":0.1415},"11":{"i":3,"x":0.5185,"y":0.2618},"12":{"i":3,"x":0.5185,"y":0.4588},"13":{"i":3,"x":0.5185,"y":0.8399},"14":{"i":4,"x":0.5185,"y":0.2346},"15":{"i":4,"x":0.5185,"y":0.4602},"16":{"i":4,"x":0.5185,"y":0.7327},"17":{"i":5,"x":0.1044,"y":0.1415},"18":{"i":6,"x":0.1044,"y":0.4375},"19":{"i":6,"x":0.1044,"y":0.732},"20":{"i":6,"x":0.5185,"y":0.1415},"21":{"i":6,"x":0.5185,"y":0.486},"22":{"i":7,"x":0.5185,"y":0.7118},"23":{"i":8,"x":0.1044,"y":0.1415},"24":{"i":8,"x":0.1044,"y":0.7331},"25":{"i":8,"x":0.5185,"y":0.1415},"26":{"i":8,"x":0.5185,"y":0.732},"27":{"i":9,"x":0.5185,"y":0.5729},"28":{"i":10,"x":0.1044,"y":0.1415},"29":{"i":10,"x":0.1044,"y":0.3372},"30":{"i":10,"x":0.1044,"y":0.5175},"31":{"i":11,"x":0.1044,"y":0.2643},"32":{"i":11,"x":0.1044,"y":0.7325},"33":{"i":11,"x":0.5185,"y":0.1415},"34":{"i":11,"x":0.5185,"y":0.3669},"35":{"i":12,"x":0.1044,"y":0.7871},"36":{"i":12,"x":0.5185,"y":0.201},"37":{"i":12,"x":0.5185,"y":0.5166},"38":{"i":13,"x":0.5185,"y":0.733},"39":{"i":14,"x":0.1044,"y":0.1421},"40":{"i":14,"x":0.1044,"y":0.4553},"41":{"i":14,"x":0.5185,"y":0.1415},"42":{"i":14,"x":0.5185,"y":0.2684},"43":{"i":15,"x":0.1044,"y":0.4038},"44":{"i":15,"x":0.1044,"y":0.5723},"45":{"i":15,"x":0.5185,"y":0.1415}},"p3":[3,8,12,17,21,23,30,34,40,45],"c":{"1":{"1":[0,0.1178,0.7918,0.0097],"2":[0,0.1178,0.8073,0.0097],"3":[0,0.1178,0.8227,0.0097],"4":[0,0.1178,0.8381,0.0097],"5":[0,0.1178,0.8535,0.0097]},"2":{"1":[0,0.5319,0.2354,0.0097],"2":[0,0.5319,0.2508,0.0097],"3":[0,0.5319,0.2662,0.0097],"4":[0,0.5318,0.2817,0.0097],"5":[0,0.5318,0.3125,0.0097]},"3":{"1":[0,0.5319,0.7508,0.0097],"2":[0,0.5319,0.7817,0.0097],"3":[0,0.5319,0.8126,0.0097],"4":[0,0.5319,0.8434,0.0097],"5":[0,0.5319,0.8743,0.0097]},"4":{"1":[1,0.5319,0.6844,0.0097],"2":[1,0.5319,0.6998,0.0097],"3":[1,0.5319,0.7152,0.0097],"4":[1,0.5319,0.7307,0.0097],"5":[1,0.5318,0.7461,0.0097]},"5":{"1":[2,0.1178,0.1597,0.0097],"2":[2,0.1178,0.1905,0.0097],"3":[2,0.1178,0.2214,0.0097],"4":[2,0.1178,0.2523,0.0097],"5":[2,0.1177,0.2831,0.0097]},"6":{"1":[2,0.1178,0.4624,0.0097],"2":[2,0.1178,0.4933,0.0097],"3":[2,0.1178,0.5241,0.0097],"4":[2,0.1178,0.555,0.0097],"5":[2,0.1178,0.5859,0.0097]},"7":{"1":[2,0.1178,0.7497,0.0097],"2":[2,0.1178,0.7806,0.0097],"3":[2,0.1178,0.8115,0.0097],"4":[2,0.1178,0.8423,0.0097],"5":[2,0.1177,0.8732,0.0097]},"8":{"1":[2,0.5319,0.3748,0.0097],"2":[2,0.5319,0.421,0.0097],"3":[2,0.5319,0.4673,0.0097],"4":[2,0.5319,0.5136,0.0097],"5":[2,0.5319,0.5599,0.0097]},"9":{"1":[2,0.5319,0.8273,0.0097],"2":[2,0.5319,0.8427,0.0097],"3":[2,0.5319,0.8581,0.0097],"4":[2,0.5319,0.8736,0.0097],"5":[2,0.5319,0.889,0.0097]},"10":{"1":[3,0.5319,0.1597,0.0097],"2":[3,0.5319,0.1751,0.0097],"3":[3,0.5319,0.1905,0.0097],"4":[3,0.5319,0.206,0.0097],"5":[3,0.5319,0.2214,0.0097]},"11":{"1":[3,0.5319,0.2801,0.0097],"2":[3,0.5319,0.311,0.0097],"3":[3,0.5319,0.3418,0.0097],"4":[3,0.5319,0.3727,0.0097],"5":[3,0.5318,0.4035,0.0097]},"12":{"1":[3,0.5319,0.6303,0.0097],"2":[3,0.5319,0.6612,0.0097],"3":[3,0.5319,0.692,0.0097],"4":[3,0.5319,0.7229,0.0097],"5":[3,0.5319,0.7692,0.0097]},"13":{"1":[3,0.5319,0.8581,0.0097],"2":[3,0.7134,0.8581,0.0097],"3":[3,0.5319,0.8735,0.0097],"4":[3,0.7135,0.8735,0.0097],"5":[3,0.5319,0.8889,0.0097]},"14":{"1":[4,0.5319,0.2528,0.0097],"2":[4,0.5319,0.2682,0.0097],"3":[4,0.5319,0.2836,0.0097],"4":[4,0.5319,0.2991,0.0097],"5":[4,0.5319,0.3145,0.0097]},"15":{"1":[4,0.5319,0.4784,0.0097],"2":[4,0.5319,0.5092,0.0097],"3":[4,0.5319,0.5247,0.0097],"4":[4,0.5319,0.5555,0.0097],"5":[4,0.5319,0.5864,0.0097]},"16":{"1":[4,0.5319,0.751,0.0097],"2":[4,0.5319,0.7819,0.0097],"3":[4,0.5319,0.8127,0.0097],"4":[4,0.5319,0.8436,0.0097],"5":[4,0.5318,0.8744,0.0097]},"17":{"1":[5,0.1178,0.3593,0.0097],"2":[5,0.1178,0.4056,0.0097],"3":[5,0.1178,0.4365,0.0097],"4":[5,0.1177,0.4828,0.0097],"5":[5,0.1177,0.529,0.0097]},"18":{"1":[6,0.1178,0.4712,0.0097],"2":[6,0.1178,0.5021,0.0097],"3":[6,0.1178,0.5329,0.0097],"4":[6,0.1178,0.5638,0.0097],"5":[6,0.1178,0.5946,0.0097]},"19":{"1":[6,0.1178,0.7502,0.0097],"2":[6,0.1178,0.781,0.0097],"3":[6,0.1178,0.8119,0.0097],"4":[6,0.1178,0.8428,0.0097],"5":[6,0.1178,0.8736,0.0097]},"20":{"1":[6,0.5319,0.1597,0.0097],"2":[6,0.5319,0.1905,0.0097],"3":[6,0.5319,0.206,0.0097],"4":[6,0.5319,0.2214,0.0097],"5":[6,0.5318,0.2523,0.0097]},"21":{"1":[6,0.5319,0.6729,0.0097],"2":[6,0.5319,0.7192,0.0097],"3":[6,0.5319,0.7655,0.0097],"4":[6,0.5319,0.8118,0.0097],"5":[6,0.5319,0.8581,0.0097]},"22":{"1":[7,0.5319,0.73,0.0097],"2":[7,0.5319,0.7609,0.0097],"3":[7,0.5319,0.7917,0.0097],"4":[7,0.5319,0.8226,0.0097],"5":[7,0.5319,0.8535,0.0097]},"23":{"1":[8,0.1178,0.313,0.0097],"2":[8,0.1178,0.3593,0.0097],"3":[8,0.1178,0.4056,0.0097],"4":[8,0.1178,0.4519,0.0097],"5":[8,0.1178,0.4982,0.0097]},"24":{"1":[8,0.1178,0.7513,0.0097],"2":[8,0.1178,0.7821,0.0097],"3":[8,0.1178,0.813,0.0097],"4":[8,0.1178,0.8439,0.0097],"5":[8,0.1178,0.8747,0.0097]},"25":{"1":[8,0.5319,0.2891,0.0097],"2":[8,0.5319,0.32,0.0097],"3":[8,0.5319,0.3508,0.0097],"4":[8,0.5319,0.3817,0.0097],"5":[8,0.5319,0.4126,0.0097]},"26":{"1":[8,0.5319,0.7502,0.0097],"2":[8,0.5319,0.7811,0.0097],"3":[8,0.5319,0.8119,0.0097],"4":[8,0.5318,0.8428,0.0097],"5":[8,0.5318,0.8736,0.0097]},"27":{"1":[9,0.5319,0.5911,0.0097],"2":[9,0.5319,0.622,0.0097],"3":[9,0.5319,0.6528,0.0097],"4":[9,0.5318,0.6837,0.0097],"5":[9,0.5318,0.7146,0.0097]},"28":{"1":[10,0.1178,0.1597,0.0097],"2":[10,0.1178,0.1905,0.0097],"3":[10,0.1178,0.206,0.0097],"4":[10,0.1178,0.2368,0.0097],"5":[10,0.1178,0.2677,0.0097]},"29":{"1":[10,0.1178,0.3554,0.0097],"2":[10,0.1178,0.3862,0.0097],"3":[10,0.1178,0.4017,0.0097],"4":[10,0.1178,0.4325,0.0097],"5":[10,0.1178,0.4634,0.0097]},"30":{"1":[10,0.1178,0.6736,0.0097],"2":[10,0.1178,0.7199,0.0097],"3":[10,0.1178,0.7662,0.0097],"4":[10,0.1179,0.8125,0.0097],"5":[10,0.1178,0.8588,0.0097]},"31":{"1":[11,0.1178,0.2825,0.0097],"2":[11,0.1178,0.3133,0.0097],"3":[11,0.1178,0.3442,0.0097],"4":[11,0.1178,0.375,0.0097],"5":[11,0.1178,0.4059,0.0097]},"32":{"1":[11,0.1178,0.7507,0.0097],"2":[11,0.1178,0.7816,0.0097],"3":[11,0.1178,0.8124,0.0097],"4":[11,0.1178,0.8433,0.0097],"5":[11,0.1178,0.8741,0.0097]},"33":{"1":[11,0.5319,0.1751,0.0097],"2":[11,0.5319,0.2059,0.0097],"3":[11,0.5319,0.2368,0.0097],"4":[11,0.5319,0.2677,0.0097],"5":[11,0.5318,0.2985,0.0097]},"34":{"1":[11,0.5319,0.5539,0.0097],"2":[11,0.5319,0.6001,0.0097],"3":[11,0.5319,0.6464,0.0097],"4":[11,0.5319,0.6927,0.0097],"5":[11,0.5319,0.739,0.0097]},"35":{"1":[12,0.1178,0.8052,0.0097],"2":[12,0.1178,0.8206,0.0097],"3":[12,0.1178,0.8361,0.0097],"4":[12,0.1178,0.8515,0.0097],"5":[12,0.1178,0.8669,0.0097]},"36":{"1":[12,0.5319,0.3189,0.0097],"2":[12,0.5319,0.3498,0.0097],"3":[12,0.5319,0.3806,0.0097],"4":[12,0.5319,0.4115,0.0097],"5":[12,0.5319,0.4423,0.0097]},"37":{"1":[12,0.5319,0.7499,0.0097],"2":[12,0.5319,0.7808,0.0097],"3":[12,0.5319,0.8116,0.0097],"4":[12,0.5318,0.8425,0.0097],"5":[12,0.5318,0.8733,0.0097]},"38":{"1":[13,0.5319,0.7512,0.0097],"2":[13,0.5319,0.782,0.0097],"3":[13,0.5319,0.8129,0.0097],"4":[13,0.5318,0.8438,0.0097],"5":[13,0.5318,0.8746,0.0097]},"39":{"1":[14,0.1178,0.2813,0.0097],"2":[14,0.1178,0.3121,0.0097],"3":[14,0.1178,0.343,0.0097],"4":[14,0.1178,0.3738,0.0097],"5":[14,0.1178,0.4047,0.0097]},"40":{"1":[14,0.1178,0.6734,0.0097],"2":[14,0.1178,0.7197,0.0097],"3":[14,0.1178,0.766,0.0097],"4":[14,0.1178,0.8123,0.0097],"5":[14,0.1178,0.8586,0.0097]},"41":{"1":[14,0.5319,0.1597,0.0097],"2":[14,0.5319,0.1751,0.0097],"3":[14,0.5319,0.1905,0.0097],"4":[14,0.5319,0.206,0.0097],"5":[14,0.5319,0.2214,0.0097]},"42":{"1":[14,0.5319,0.416,0.0097],"2":[14,0.5319,0.4314,0.0097],"3":[14,0.5319,0.4468,0.0097],"4":[14,0.5319,0.4623,0.0097],"5":[14,0.5319,0.4777,0.0097]},"43":{"1":[15,0.1178,0.422,0.0097],"2":[15,0.1178,0.4375,0.0097],"3":[15,0.1178,0.4529,0.0097],"4":[15,0.1178,0.4683,0.0097],"5":[15,0.1178,0.4838,0.0097]},"44":{"1":[15,0.1178,0.6736,0.0097],"2":[15,0.1178,0.7199,0.0097],"3":[15,0.1178,0.7662,0.0097],"4":[15,0.1178,0.8125,0.0097],"5":[15,0.1178,0.8588,0.0097]},"45":{"1":[15,0.5319,0.5206,0.0097],"2":[15,0.5319,0.5669,0.0097],"3":[15,0.5319,0.6132,0.0097],"4":[15,0.5319,0.6595,0.0097],"5":[15,0.5319,0.7212,0.0097]}}}}
+;/* 홀수형 정답 (답지 PDF 기준) — null이면 아직 미입력 */
+const ANSWER_KEY = [1,4,3,2,3,5,3,2,1,4,2,5,3,1,3,5,3,2,1,5,4,1,4,5,3,5,2,5,4,2,1,2,4,4,1,5,5,3,3,5,1,3,4,2,4];
+const P3 = [3,8,12,17,21,23,30,34,40,45];
+let QMAP={};
+function setMsg(t){ document.getElementById('vMsg').textContent=t; }
+function buildView(){
+  renderFormSel();
+  if(window.innerWidth<700 && zoomPct===100){ zoomPct=75; zoom(100); }
+  const E=EXAM['홀'], pages=document.getElementById('pages'); pages.innerHTML=''; QMAP={};
+  const wraps=E.pages.map((src,i)=>{ const w=document.createElement('div'); w.className='pg'; w.style.aspectRatio='842/1191'; const im=document.createElement('img'); im.src=src; im.loading=i<2?'eager':'lazy'; im.alt=`홀수형 ${i+1}쪽`; w.appendChild(im); pages.appendChild(w); return w; });
+  Object.entries(E.q).forEach(([q,v])=>QMAP[q]={...v,el:wraps[v.i]});
+  const R=1191/842;
+  Object.entries(E.c).forEach(([q,cs])=>Object.entries(cs).forEach(([c,[i,x,y,h]])=>{
+    const sw=h*R*1.55, sh=h*1.55, cx=x+h*R*0.5;
+    const b=document.createElement('button'); b.className='opt'; b.dataset.oq=q; b.dataset.oc=c; b.setAttribute('aria-label',`${q}번 ${c}번 선지`);
+    b.style.left=((cx-sw/2)*100)+'%'; b.style.top=((y-sh/2)*100)+'%'; b.style.width=(sw*100)+'%'; b.style.height=(sh*100)+'%';
+    b.onclick=(ev)=>{ ev.stopPropagation(); sheetPick(+q,+c); };
+    wraps[i].appendChild(b);
+  }));
+  refreshMarks();
+  setMsg(`홀수형 · 공통 + 화법과 작문 ${E.pages.length}쪽 ✨`);
+  setTimeout(()=>scrollToQ(cur,false),50);
+}
+function refreshMarks(only){
+  document.querySelectorAll(only?`.opt[data-oq="${only}"]`:'.opt').forEach(b=>{ const q=+b.dataset.oq; b.classList.toggle('on', S.mine[q]===+b.dataset.oc); b.dataset.cq = q===cur?'1':'0'; });
+  document.querySelectorAll('.pg').forEach(p=>p.classList.toggle('curq', !!(QMAP[cur]&&QMAP[cur].el===p)));
+}
+function sheetPick(q,c){
+  if(S.mine[q]===c) delete S.mine[q]; else S.mine[q]=c;
+  save(); const prev=cur; cur=q; document.getElementById('qSel').value=q; document.getElementById('qSec').textContent=secOf(q).name;
+  renderBar(); renderSheet(); syncRow(q); updateProg(); refreshMarks();
+  toast(S.mine[q]?`${q}번 → ${"①②③④⑤"[c-1]}`:`${q}번 지움`);
+}
+function scrollToQ(q,smooth=true){
+  const m=QMAP[q]; const old=document.getElementById('marker');
+  if(!m||!m.el){ if(old) old.remove(); return; }
+  const v=document.getElementById('viewer'), el=m.el;
+  let mk=old||document.createElement('div'); mk.id='marker'; mk.textContent='👉'; el.appendChild(mk);
+  mk.style.top=(m.y*100)+'%'; mk.style.left=(m.x*100)+'%';
+  v.scrollTo({top:el.offsetTop+m.y*el.offsetHeight-24,left:Math.max(0,el.offsetLeft+m.x*el.offsetWidth-30),behavior:smooth?'smooth':'auto'});
+}
+/* ---------- 정답·배점 ---------- */
+function pt(q){ return P3.includes(q)?3:2; }
+function renderPts(){}
+function keyMsg(){}
+function renderFormSel(){}
+/* ---------- 결과 ---------- */
+function renderResult(){
+  const k = ANSWER_KEY, box=document.getElementById('resultBox');
+  if(!k || k.length!==N){
+    box.innerHTML = `<div class="card"><b>정답이 아직 준비 중이에요 ⏳</b><div class="small" style="margin:6px 0 0">내 답부터 끝까지 복기해 두면, 정답이 올라오는 대로 바로 채점돼요.</div></div>`;
+    return;
+  }
+  let score=0, wrong=[], blank=[], secScore=SECTIONS.map(()=>({got:0,max:0,ok:0,n:0}));
+  let confStat=[0,1,2].map(()=>({ok:0,n:0}));
+  let sure=0, maybeLost=0;
+  for(let q=1;q<=N;q++){
+    const si = SECTIONS.findIndex(s=>q>=s.from&&q<=s.to), p=pt(q), my=S.mine[q], ok=my===k[q-1];
+    secScore[si].max+=p; secScore[si].n++;
+    if(ok){ score+=p; secScore[si].got+=p; secScore[si].ok++; }
+    if(!my) blank.push(q); else if(!ok) wrong.push(q);
+    const c=S.conf[q];
+    if(c!==undefined && my){ confStat[c].n++; if(ok) confStat[c].ok++; }
+    if(ok && (c===undefined||c===0)) sure+=p;
+  }
+  // 점수 범위: 미입력 문항 전부 틀림 ~ 전부 맞음
+  let blankPts = blank.reduce((a,q)=>a+pt(q),0);
+  let html = `<div class="card">
+    <div class="small">이서의 가채점 원점수 (화법과 작문)</div>
+    <div class="big">${score}<span style="font-size:20px;color:var(--sub)"> / 100</span></div>
+    ${blank.length?`<div class="small">미입력 ${blank.length}문항(${blankPts}점) 포함 시 최대 ${score+blankPts}점</div>`:""}
+    <div class="cheer">${score>=90?'🌟 이 정도면 관악산 보인다!':score>=80?'🍀 수고 많았어, 이서의야!':'🫶 오늘 진짜 고생했어, 이서의야!'}</div>
+    <div class="stats">
+      <div class="stat"><b style="color:var(--ok)">${N-wrong.length-blank.length}</b><span class="small">맞음</span></div>
+      <div class="stat"><b style="color:var(--bad)">${wrong.length}</b><span class="small">틀림</span></div>
+      <div class="stat"><b>${blank.length}</b><span class="small">미입력</span></div>
+    </div>
+  </div>`;
+  html += `<div class="card"><b>영역별</b><table><tr><th>영역</th><th>맞은 수</th><th>점수</th></tr>`;
+  SECTIONS.forEach((s,i)=> html += `<tr><td style="text-align:left">${s.name}</td><td>${secScore[i].ok} / ${secScore[i].n}</td><td><b>${secScore[i].got}</b> / ${secScore[i].max}</td></tr>`);
+  html += `</table></div>`;
+
+  if(confStat.some(c=>c.n)){
+    html += `<div class="card"><b>복기 신뢰도</b><div class="small" style="margin:4px 0 6px">'확실'로 표시한 답이 많이 틀렸다면 복기 자체가 부정확할 수 있어요. 시험지 흔적을 다시 확인해 보세요.</div><table><tr><th>자신감</th><th>문항 수</th><th>맞힌 비율</th></tr>`;
+    confStat.forEach((c,i)=>{ if(c.n) html += `<tr><td><span class="tag t${i}">${CONF[i]}</span></td><td>${c.n}</td><td>${Math.round(c.ok/c.n*100)}%</td></tr>`; });
+    html += `</table></div>`;
+  }
+
+  html += `<div class="card"><b>문항별 결과</b><div class="small" style="margin:4px 0 8px">빨강 = 틀림 · 점선 = 미입력 · 칸 아래 숫자 = 내 답→정답</div><div class="res">`;
+  for(let q=1;q<=N;q++){
+    const my=S.mine[q], a=k[q-1], cls = !my?"na":(my===a?"ok":"x");
+    html += `<div class="cell ${cls}"><b>${q}</b>${my?my:"-"}${my===a?"":"→"+a}</div>`;
+  }
+  html += `</div></div>`;
+
+  if(wrong.length){
+    html += `<div class="card"><b>틀린 문항 다시 보기</b><table><tr><th>번호</th><th>배점</th><th>내 답</th><th>정답</th><th>자신감</th></tr>`;
+    wrong.forEach(q=>{ const c=S.conf[q]; html += `<tr><td><b>${q}</b></td><td>${pt(q)}</td><td>${S.mine[q]}</td><td><b>${k[q-1]}</b></td><td>${c!==undefined?`<span class="tag t${c}">${CONF[c]}</span>`:"-"}</td></tr>${S.memo[q]?`<tr><td></td><td colspan="4" class="small" style="text-align:left">✎ ${S.memo[q]}</td></tr>`:""}`; });
+    html += `</table></div>`;
+  }
+  html += `<div class="flex"><button class="btn" onclick="copyResult()">결과 복사하기</button><button class="btn ghost" onclick="go('mine')">내 답 수정</button></div>
+  <div class="small" style="margin-top:12px">※ 기억에 의존한 가채점이라 실제 점수와 다를 수 있어요. 표준점수·등급은 성적 발표 때 확정돼요.</div>`;
+  box.innerHTML = html;
+  S._last = {score, wrong, blank, k};
+}
+function copyResult(){
+  const r=S._last; if(!r) return;
+  let t=`[이서의 수능 국어 가채점 · 화법과 작문 · 홀수형]\n원점수 ${r.score}/100\n`;
+  t+=`틀린 문항: ${r.wrong.length?r.wrong.map(q=>`${q}번(${S.mine[q]}→${r.k[q-1]})`).join(", "):"없음"}\n`;
+  if(r.blank.length) t+=`미입력: ${r.blank.join(", ")}\n`;
+  t+=`내 답: `+Array.from({length:N},(_,i)=>S.mine[i+1]||"-").join("");
+  navigator.clipboard.writeText(t).then(()=>toast("복사 완료 💌"),()=>toast("복사 실패 — 화면을 캡처해 주세요"));
+}
+
+/* ---------- 공통 ---------- */
+function go(tab){
+  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on', b.dataset.tab===tab));
+  ["mine","result"].forEach(t=>document.getElementById('tab-'+t).classList.toggle('hide', t!==tab));
+  if(tab==="result") renderResult();
+  document.getElementById('bar').classList.toggle('hide', tab!=='mine');
+  document.body.classList.toggle('has-bar', tab==='mine');
+  window.scrollTo(0,0);
+}
+function askReset(){ document.getElementById('modal').classList.remove('hide'); }
+function closeModal(){ document.getElementById('modal').classList.add('hide'); }
+function doReset(){ S={mine:{},conf:{},memo:{},form:'홀'}; save(); renderMine(); renderPts(); keyMsg(); closeModal(); setCur(1); buildView(); toast("초기화했어요"); }
+
+load(); S.form='홀';
+renderMine(); renderPts(); keyMsg();
+(function(){const sel=document.getElementById('qSel');for(let q=1;q<=N;q++){const o=document.createElement('option');o.value=q;o.textContent=q+'번';sel.appendChild(o);}document.body.classList.add('has-bar');setCur(1);buildView();})();
+</script>
+</body>
+</html>
